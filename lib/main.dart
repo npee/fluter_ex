@@ -47,6 +47,22 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class PanicButton extends StatelessWidget {
+  final Widget display;
+  final VoidCallback onPressed;
+
+  PanicButton({required this.display, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      color: Colors.red,
+      child: display,
+      onPressed: onPressed,
+    );
+  }
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -108,8 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            RaisedButton(
-              child: Text("Decrement Counter"),
+            PanicButton(
+              display: Text("Decrement Counter"),
               onPressed: _decrementCounter,
             ),
           ],
